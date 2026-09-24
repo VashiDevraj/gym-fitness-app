@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="12dp"
+    android:elevation="4dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- User ID / Name -->
+        <TextView
+            android:id="@+id/tvUserId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UID: "
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- Age -->
+        <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age: "/>
+
+        <!-- BMI -->
+        <TextView
+            android:id="@+id/tvBMI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BMI: "
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Button to assign diet -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAssignDiet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Assign Diet Plan"
+            android:backgroundTint="#1F6B5A"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

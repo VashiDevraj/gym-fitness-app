@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4FF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="24dp">
+
+        <!-- ── GREETING ROW ─────────────────────────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvGreeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Good morning! 👋"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A1A2E"/>
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monday, 21 March"
+                    android:textSize="13sp"
+                    android:textColor="#888888"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <!-- Streak badge -->
+            <LinearLayout
+                android:id="@+id/streakBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_orange_bg"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔥"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvStreak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 day streak"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#E65100"
+                    android:layout_marginStart="4dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ── CUSTOM SWIPEABLE STEPS CARD ──────────────── -->
+        <!--
+            This is our custom StepsCardView.
+            It draws everything (arc, steps, stats, swipe hint) internally.
+            Swipe LEFT to see Yesterday, swipe RIGHT for Today.
+            Turns green when goal is reached.
+        -->
+        <com.example.gymapplication.StepsCardView
+            android:id="@+id/stepsCard"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:clipToPadding="false"
+            android:clickable="true"
+            android:focusable="true"
+            android:clipChildren="false"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Last updated / tap to refresh -->
+        <TextView
+            android:id="@+id/tvLastUpdated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔄 Tap to refresh"
+            android:textSize="11sp"
+            android:textColor="#AAAACC"
+            android:gravity="center"
+            android:paddingBottom="12dp"
+            android:paddingTop="2dp"/>
+
+        <!-- ── STATS ROW ─────────────────────────────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!-- Calories -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#FFF3E0">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="14dp">
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔥" android:textSize="20sp"/>
+                    <TextView android:id="@+id/tvCalories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—" android:textSize="20sp"
+                        android:textStyle="bold" android:textColor="#BF360C"
+                        android:layout_marginTop="4dp"/>
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="kcal burned" android:textSize="11sp"
+                        android:textColor="#E64A19"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Active minutes -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#E8F5E9">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="14dp">
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚡" android:textSize="20sp"/>
+                    <TextView android:id="@+id/tvActiveMinutes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—" android:textSize="20sp"
+                        android:textStyle="bold" android:textColor="#1B5E20"
+                        android:layout_marginTop="4dp"/>
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="active min" android:textSize="11sp"
+                        android:textColor="#2E7D32"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- BMI -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                app:cardCornerRadius="18dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#E3F2FD">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="14dp">
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📊" android:textSize="20sp"/>
+                    <TextView android:id="@+id/tvBMI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—" android:textSize="20sp"
+                        android:textStyle="bold" android:textColor="#0D47A1"
+                        android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvBMIStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BMI" android:textSize="11sp"
+                        android:textColor="#1565C0"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- ── WATER TRACKER ─────────────────────────────── -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_marginBottom="16dp">
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="18dp">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+                    <TextView android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="💧 Water Intake"
+                        android:textSize="15sp" android:textStyle="bold"
+                        android:textColor="#1A1A2E"/>
+                    <TextView android:id="@+id/tvWaterGoal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Goal: 2500 ml"
+                        android:textSize="12sp" android:textColor="#42A5F5"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <ProgressBar android:id="@+id/waterProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp" android:layout_height="10dp"
+                        android:layout_weight="1" android:max="100"
+                        android:progress="0"
+                        android:progressTint="#29B6F6"
+                        android:progressBackgroundTint="#E3F2FD"
+                        android:layout_marginEnd="12dp"/>
+                    <TextView android:id="@+id/tvWater"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 / 2500 ml"
+                        android:textSize="13sp" android:textStyle="bold"
+                        android:textColor="#0288D1"
+                        android:layout_marginEnd="12dp"/>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddWater"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+250ml"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFF"
+                        android:backgroundTint="#29B6F6"
+                        app:cornerRadius="12dp"
+                        style="@style/Widget.MaterialComponents.Button"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ── DIET PLAN ──────────────────────────────────── -->
+        <!-- ── DIET PLAN ──────────────────────────────────── -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="14dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nutrition Plan"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A2E"/>
+
+                    <TextView
+                        android:id="@+id/tvDietCalories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textSize="12sp"
+                        android:textColor="#3F51B5"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Macro chips row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="14dp">
+
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/macro_chip_red"
+                        android:padding="10dp"
+                        android:layout_marginEnd="5dp">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Protein"
+                            android:textSize="10sp" android:textColor="#C62828"/>
+                        <TextView android:id="@+id/tvProtein"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="— g"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#C62828"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/macro_chip_orange"
+                        android:padding="10dp"
+                        android:layout_marginHorizontal="5dp">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Carbs"
+                            android:textSize="10sp" android:textColor="#E65100"/>
+                        <TextView android:id="@+id/tvCarbs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="— g"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#E65100"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@drawable/macro_chip_blue"
+                        android:padding="10dp"
+                        android:layout_marginStart="5dp">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fats"
+                            android:textSize="10sp" android:textColor="#0D47A1"/>
+                        <TextView android:id="@+id/tvFats"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="— g"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#0D47A1"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Meal cards -->
+                <LinearLayout
+                    android:id="@+id/layoutMeals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Today's Meals"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A2E"
+                        android:layout_marginBottom="8dp"/>
+
+                    <!-- Breakfast -->
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/meal_row_bg"
+                        android:padding="12dp"
+                        android:layout_marginBottom="6dp"
+                        android:gravity="center_vertical">
+                        <TextView android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:text="Breakfast"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="#888888"/>
+                        <TextView android:id="@+id/tvBreakfast"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="13sp"
+                            android:textColor="#1A1A2E"
+                            android:layout_marginStart="8dp"
+                            android:text="—"/>
+                    </LinearLayout>
+
+                    <!-- Lunch -->
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/meal_row_bg"
+                        android:padding="12dp"
+                        android:layout_marginBottom="6dp"
+                        android:gravity="center_vertical">
+                        <TextView android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:text="Lunch"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="#888888"/>
+                        <TextView android:id="@+id/tvLunch"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="13sp"
+                            android:textColor="#1A1A2E"
+                            android:layout_marginStart="8dp"
+                            android:text="—"/>
+                    </LinearLayout>
+
+                    <!-- Dinner -->
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/meal_row_bg"
+                        android:padding="12dp"
+                        android:layout_marginBottom="6dp"
+                        android:gravity="center_vertical">
+                        <TextView android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:text="Dinner"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="#888888"/>
+                        <TextView android:id="@+id/tvDinner"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="13sp"
+                            android:textColor="#1A1A2E"
+                            android:layout_marginStart="8dp"
+                            android:text="—"/>
+                    </LinearLayout>
+
+                    <!-- Snacks -->
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/meal_row_bg"
+                        android:padding="12dp"
+                        android:gravity="center_vertical">
+                        <TextView android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:text="Snacks"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="#888888"/>
+                        <TextView android:id="@+id/tvSnacks"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="13sp"
+                            android:textColor="#1A1A2E"
+                            android:layout_marginStart="8dp"
+                            android:text="—"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Notes -->
+                <TextView
+                    android:id="@+id/tvDietNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#F8F8F8"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="No trainer notes"
+                    android:textSize="12sp"
+                    android:textColor="#888888"
+                    android:textStyle="italic"
+                    android:visibility="gone"/>
+
+                <!-- No plan state -->
+                <TextView
+                    android:id="@+id/tvNoDietPlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Your trainer hasn't assigned a diet plan yet."
+                    android:textSize="13sp"
+                    android:textColor="#AAAAAA"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ── BODY STATS ─────────────────────────────────── -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_marginBottom="16dp">
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="18dp">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="14dp">
+                    <TextView android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="⚖️ Body Stats"
+                        android:textSize="15sp" android:textStyle="bold"
+                        android:textColor="#1A1A2E"/>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnViewWeightChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View Chart"
+                        android:textSize="11sp"
+                        android:textColor="#7B1FA2"
+                        android:backgroundTint="#F3E5F5"
+                        app:cornerRadius="10dp"
+                        style="@style/Widget.MaterialComponents.Button"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Weight" android:textSize="11sp"
+                            android:textColor="#888888"/>
+                        <TextView android:id="@+id/tvWeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="— kg" android:textSize="22sp"
+                            android:textStyle="bold" android:textColor="#1A1A2E"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Height" android:textSize="11sp"
+                            android:textColor="#888888"/>
+                        <TextView android:id="@+id/tvHeight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="— cm" android:textSize="22sp"
+                            android:textStyle="bold" android:textColor="#1A1A2E"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Age" android:textSize="11sp"
+                            android:textColor="#888888"/>
+                        <TextView android:id="@+id/tvAge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="— yr" android:textSize="22sp"
+                            android:textStyle="bold" android:textColor="#1A1A2E"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ── MOTIVATION ────────────────────────────────── -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#1A1A2E"
+            android:layout_marginBottom="16dp">
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="20dp">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✨ Daily Motivation"
+                    android:textSize="13sp" android:textColor="#8899BB"
+                    android:layout_marginBottom="8dp"/>
+                <TextView android:id="@+id/textMotivation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Loading..."
+                    android:textSize="15sp" android:textColor="#FFFFFF"
+                    android:textStyle="italic" android:lineSpacingExtra="4dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ── QUICK ACTION CARDS ────────────────────────── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardWorkout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#E8EAF6">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🏋️" android:textSize="28sp"/>
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Workout" android:textSize="12sp"
+                        android:textStyle="bold" android:textColor="#3949AB"
+                        android:layout_marginTop="6dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCheckin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#F3E5F5">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✅" android:textSize="28sp"/>
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check In" android:textSize="12sp"
+                        android:textStyle="bold" android:textColor="#7B1FA2"
+                        android:layout_marginTop="6dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardDiet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#E8F5E9">
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center" android:padding="16dp">
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🥗" android:textSize="28sp"/>
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Diet" android:textSize="12sp"
+                        android:textStyle="bold" android:textColor="#2E7D32"
+                        android:layout_marginTop="6dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

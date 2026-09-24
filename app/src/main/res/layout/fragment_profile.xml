@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F4FF"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <!-- ══ HERO HEADER ═══════════════════════════════════ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="48dp"
+            android:paddingBottom="36dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:background="@drawable/profile_header_bg">
+
+            <!-- Avatar circle -->
+            <TextView
+                android:id="@+id/textAvatar"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:gravity="center"
+                android:text="A"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:background="@drawable/circle_avatar_bg"
+                android:elevation="4dp"/>
+
+            <TextView
+                android:id="@+id/textName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="14dp"/>
+
+            <TextView
+                android:id="@+id/textEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="email@gmail.com"
+                android:textSize="13sp"
+                android:textColor="#CCDCFF"
+                android:layout_marginTop="4dp"/>
+
+        </LinearLayout>
+
+        <!-- ══ BODY STATS STRIP ═══════════════════════════════ -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="-20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+
+                <!-- Weight -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚖️"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:id="@+id/tvStatWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A2E"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weight"
+                        android:textSize="11sp"
+                        android:textColor="#AAAAAA"/>
+                </LinearLayout>
+
+                <View android:layout_width="1dp" android:layout_height="44dp"
+                    android:background="#EEEEEE"/>
+
+                <!-- Height -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📏"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:id="@+id/tvStatHeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A2E"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Height"
+                        android:textSize="11sp"
+                        android:textColor="#AAAAAA"/>
+                </LinearLayout>
+
+                <View android:layout_width="1dp" android:layout_height="44dp"
+                    android:background="#EEEEEE"/>
+
+                <!-- BMI -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📊"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:id="@+id/tvStatBMI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A2E"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BMI"
+                        android:textSize="11sp"
+                        android:textColor="#AAAAAA"/>
+                </LinearLayout>
+
+                <View android:layout_width="1dp" android:layout_height="44dp"
+                    android:background="#EEEEEE"/>
+
+                <!-- Age -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎂"
+                        android:textSize="18sp"/>
+                    <TextView
+                        android:id="@+id/tvStatAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="—"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A2E"
+                        android:layout_marginTop="4dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Age"
+                        android:textSize="11sp"
+                        android:textColor="#AAAAAA"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Step goal chip -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/chip_goal_bg"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎯  Goal: "
+                android:textSize="13sp"
+                android:textColor="#5B5BFF"/>
+            <TextView
+                android:id="@+id/tvStatStepGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8000 steps/day"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#3333CC"/>
+        </LinearLayout>
+
+        <!-- ══ PERSONAL INFO SECTION ══════════════════════════ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PERSONAL"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.15"
+            android:textColor="#AAAAAA"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <!-- Edit Height & Weight -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEditProfile"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Edit Height &amp; Weight"
+                    android:textColor="#1A1A2E"
+                    android:textSize="15sp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="8dp"
+                    app:icon="@drawable/ic_edit"
+                    app:iconTint="#5B5BFF"
+                    app:iconGravity="start"
+                    app:cornerRadius="12dp"
+                    android:backgroundTint="@null"/>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
+                    android:background="#F0F0F0"/>
+
+                <!-- Change Username -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEditUsername"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Change Username"
+                    android:textColor="#1A1A2E"
+                    android:textSize="15sp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="8dp"
+                    app:icon="@drawable/ic_person"
+                    app:iconTint="#5B5BFF"
+                    app:iconGravity="start"
+                    app:cornerRadius="12dp"
+                    android:backgroundTint="@null"/>
+
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:layout_marginStart="16dp" android:layout_marginEnd="16dp"
+                    android:background="#F0F0F0"/>
+
+                <!-- Change Step Goal -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEditGoal"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Change Step Goal"
+                    android:textColor="#1A1A2E"
+                    android:textSize="15sp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="8dp"
+                    app:icon="@drawable/ic_flag"
+                    app:iconTint="#5B5BFF"
+                    app:iconGravity="start"
+                    app:cornerRadius="12dp"
+                    android:backgroundTint="@null"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ══ SECURITY SECTION ═══════════════════════════════ -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SECURITY"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.15"
+            android:textColor="#AAAAAA"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <!-- Change Password -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnChangePassword"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Change Password"
+                    android:textColor="#1A1A2E"
+                    android:textSize="15sp"
+                    android:gravity="start|center_vertical"
+                    android:paddingStart="8dp"
+                    app:icon="@drawable/ic_lock"
+                    app:iconTint="#5B5BFF"
+                    app:iconGravity="start"
+                    app:cornerRadius="12dp"
+                    android:backgroundTint="@null"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ══ LOGOUT BUTTON ═══════════════════════════════════ -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFF0F0">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Logout"
+                android:textColor="#E53935"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:gravity="start|center_vertical"
+                android:paddingStart="8dp"
+                app:icon="@drawable/ic_logout"
+                app:iconTint="#E53935"
+                app:iconGravity="start"
+                app:cornerRadius="18dp"
+                android:backgroundTint="@null"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- App version note -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GymApp • v1.0"
+            android:textSize="12sp"
+            android:textColor="#CCCCCC"
+            android:gravity="center"
+            android:layout_marginTop="24dp"/>
+
+    </LinearLayout>
+</ScrollView>

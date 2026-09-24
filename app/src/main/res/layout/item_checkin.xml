@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="14dp">
+
+    <!-- Day circle -->
+    <LinearLayout
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/badge_orange_bg">
+        <TextView
+            android:id="@+id/tvCheckInDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mon"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="#E65100"/>
+    </LinearLayout>
+
+    <!-- Date + time -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <TextView
+            android:id="@+id/textCheckInDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01 Jan 2026"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#1A1A2E"/>
+
+        <TextView
+            android:id="@+id/textCheckInTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="at 09:30"
+            android:textSize="12sp"
+            android:textColor="#888888"/>
+    </LinearLayout>
+
+    <!-- Badge -->
+    <TextView
+        android:id="@+id/tvCheckInBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visited"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"/>
+
+</LinearLayout>

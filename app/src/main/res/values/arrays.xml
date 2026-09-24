@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="range_array">
+        <item>7 Days</item>
+        <item>30 Days</item>
+        <item>90 Days</item>
+    </string-array>
+</resources>

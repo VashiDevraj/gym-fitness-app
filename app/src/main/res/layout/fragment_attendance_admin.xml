@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header summary card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#1A1A2E"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="20dp">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="Attendance Overview"
+                        android:textSize="16sp" android:textStyle="bold" android:textColor="#FFFFFF"/>
+                    <TextView android:id="@+id/tvMonthHeader" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="March 2026"
+                        android:textSize="12sp" android:textColor="#8899BB"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginTop="12dp">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Total members" android:textSize="11sp" android:textColor="#8899BB"/>
+                        <TextView android:id="@+id/tvTotalMembers" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textSize="32sp" android:textStyle="bold" android:textColor="#FFFFFF"/>
+                    </LinearLayout>
+
+                    <View android:layout_width="1dp" android:layout_height="50dp"
+                        android:background="#2A2A4A"/>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Checked in today" android:textSize="11sp" android:textColor="#8899BB"/>
+                        <TextView android:id="@+id/tvCheckedInToday" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textSize="32sp" android:textStyle="bold" android:textColor="#69F0AE"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Section label -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Member Attendance" android:textSize="15sp"
+            android:textStyle="bold" android:textColor="#1A1A2E" android:layout_marginBottom="10dp"/>
+
+        <!-- Loading spinner -->
+        <ProgressBar android:id="@+id/progressLoading" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_gravity="center"
+            android:visibility="visible"/>
+
+        <!-- Members dynamically added here -->
+        <LinearLayout android:id="@+id/containerMembers" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical"/>
+
+    </LinearLayout>
+</ScrollView>

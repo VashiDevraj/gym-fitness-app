@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#F8F9FF">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="#1A1A2E" android:orientation="horizontal"
+        android:padding="16dp" android:gravity="center_vertical">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="Manage Workouts"
+            android:textSize="16sp" android:textStyle="bold" android:textColor="#FFFFFF"/>
+        <TextView android:id="@+id/tvWorkoutCount" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="0 workouts"
+            android:textSize="12sp" android:textColor="#8899BB"/>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="12dp" android:background="#FFFFFF"
+        android:gravity="center_vertical">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Goal: " android:textSize="13sp" android:textColor="#555555"
+            android:layout_marginEnd="8dp"/>
+        <Spinner android:id="@+id/spinnerGoal" android:layout_width="0dp"
+            android:layout_height="wrap_content" android:layout_weight="1"/>
+    </LinearLayout>
+
+    <ProgressBar android:id="@+id/progressAdminWorkout" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/rvAdminWorkouts"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:padding="12dp" android:clipToPadding="false"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddWorkout" android:layout_width="match_parent"
+        android:layout_height="52dp" android:text="+ Add Workout"
+        android:textSize="15sp" android:backgroundTint="#3949AB"
+        app:cornerRadius="0dp" style="@style/Widget.MaterialComponents.Button"/>
+</LinearLayout>

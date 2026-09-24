@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Preview -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="#F0F0F0"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/imgGifPreviewDialog"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Image preview"
+                android:textColor="#AAAAAA"
+                android:textSize="13sp"/>
+        </FrameLayout>
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/tvMediaStatusDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚠️ No image set"
+            android:textSize="12sp"
+            android:textColor="#FF9800"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- URL section -->
+        <EditText
+            android:id="@+id/etGifUrlInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Paste direct GIF or image URL"
+            android:inputType="textUri"
+            android:layout_marginBottom="6dp"/>
+
+        <Button
+            android:id="@+id/btnPreviewGifDialog"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:text="👁️ Preview URL"
+            android:backgroundTint="#3949AB"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- OR divider -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#DDDDDD"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  OR  "
+                android:textSize="12sp"
+                android:textColor="#999999"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#DDDDDD"/>
+        </LinearLayout>
+
+        <!-- Gallery picker -->
+        <Button
+            android:id="@+id/btnPickGalleryDialog"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="🖼️ Choose from Gallery"
+            android:backgroundTint="#FF9800"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Sample URLs tip -->
+        <TextView
+            android:id="@+id/tvGifSampleUrls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="12sp"
+            android:textColor="#555555"
+            android:lineSpacingExtra="4dp"
+            android:background="#F5F5F5"
+            android:padding="12dp"/>
+
+    </LinearLayout>
+</ScrollView>

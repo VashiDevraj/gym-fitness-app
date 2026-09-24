@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8F9FF">
+
+    <!-- Status summary -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="#1A1A2E" android:orientation="horizontal"
+        android:padding="12dp">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Working" android:textSize="10sp" android:textColor="#8899BB"/>
+            <TextView android:id="@+id/tvWorkingCount" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="0"
+                android:textSize="22sp" android:textStyle="bold" android:textColor="#69F0AE"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Needs Repair" android:textSize="10sp" android:textColor="#8899BB"/>
+            <TextView android:id="@+id/tvRepairCount" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="0"
+                android:textSize="22sp" android:textStyle="bold" android:textColor="#FFD740"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Out of Order" android:textSize="10sp" android:textColor="#8899BB"/>
+            <TextView android:id="@+id/tvOutCount" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="0"
+                android:textSize="22sp" android:textStyle="bold" android:textColor="#FF5252"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Search + filter -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="12dp"
+        android:background="#FFFFFF" android:gravity="center_vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:hint="Search equipment..."
+            android:layout_marginEnd="8dp"
+            app:boxCornerRadiusTopStart="12dp" app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusBottomEnd="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEquipmentSearch"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="text" android:textSize="14sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner android:id="@+id/spinnerStatusFilter"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:minWidth="110dp"/>
+    </LinearLayout>
+
+    <ProgressBar android:id="@+id/progressEquipment"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="center" android:visibility="gone"/>
+
+    <TextView android:id="@+id/tvEquipmentEmpty"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:gravity="center" android:padding="32dp"
+        android:text="No equipment found" android:textSize="14sp"
+        android:textColor="#AAAAAA" android:visibility="gone"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvEquipment"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:padding="12dp" android:clipToPadding="false"/>
+
+</LinearLayout>

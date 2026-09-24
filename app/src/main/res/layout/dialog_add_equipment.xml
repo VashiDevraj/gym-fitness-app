@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="16dp">
+        <EditText android:id="@+id/etEquipName" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Equipment name *"
+            android:inputType="textCapWords" android:layout_marginBottom="8dp"/>
+        <EditText android:id="@+id/etEquipDesc" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Description"
+            android:layout_marginBottom="8dp"/>
+        <EditText android:id="@+id/etEquipLocation" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Location (e.g. Ground Floor)"
+            android:layout_marginBottom="8dp"/>
+        <EditText android:id="@+id/etLastMaintenance" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Last maintenance date (yyyy-MM-dd)"
+            android:layout_marginBottom="8dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Category:" android:textSize="12sp" android:textColor="#555555"/>
+        <Spinner android:id="@+id/spinnerEquipCategory" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginBottom="8dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Status:" android:textSize="12sp" android:textColor="#555555"/>
+        <Spinner android:id="@+id/spinnerEquipStatus" android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>

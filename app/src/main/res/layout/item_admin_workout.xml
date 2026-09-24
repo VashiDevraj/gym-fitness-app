@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <!-- Image / Emoji preview box -->
+        <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="#F0F0F0"
+            android:layout_marginEnd="12dp">
+
+            <ImageView
+                android:id="@+id/imgAdminWorkoutGif"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tvAdminWorkoutEmoji"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+        <!-- Info section -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Name -->
+            <TextView
+                android:id="@+id/tvAdminWorkoutName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A2E"
+                android:layout_marginBottom="2dp"/>
+
+            <!-- Goal -->
+            <TextView
+                android:id="@+id/tvAdminWorkoutGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#3949AB"
+                android:textStyle="bold"/>
+
+            <!-- Category -->
+            <TextView
+                android:id="@+id/tvAdminWorkoutCat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#888888"/>
+
+            <!-- Difficulty -->
+            <TextView
+                android:id="@+id/tvAdminWorkoutDiff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <!-- Calories + Duration row -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvAdminWorkoutCals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#666666"
+                    android:layout_marginEnd="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvAdminWorkoutDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#666666"/>
+            </LinearLayout>
+
+            <!-- Muscles -->
+            <TextView
+                android:id="@+id/tvAdminWorkoutMuscles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#777777"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <!-- Image status -->
+            <TextView
+                android:id="@+id/tvAdminGifStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#FF9800"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"/>
+
+            <!-- Action buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <Button
+                    android:id="@+id/btnAdminEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="1"
+                    android:text="✏️ Edit"
+                    android:textSize="11sp"
+                    android:backgroundTint="#3949AB"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginEnd="5dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"/>
+
+                <Button
+                    android:id="@+id/btnAdminDelete"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="1"
+                    android:text="🗑️ Del"
+                    android:textSize="11sp"
+                    android:backgroundTint="#E53935"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginEnd="5dp"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"/>
+
+                <Button
+                    android:id="@+id/btnAdminSetGif"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="1"
+                    android:text="🖼️ Img"
+                    android:textSize="11sp"
+                    android:backgroundTint="#FF9800"
+                    android:textColor="#FFFFFF"
+                    android:paddingStart="4dp"
+                    android:paddingEnd="4dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

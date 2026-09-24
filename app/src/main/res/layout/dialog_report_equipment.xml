@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical" android:padding="16dp">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Describe the issue:" android:textSize="14sp"
+        android:textStyle="bold" android:textColor="#1A1A2E" android:layout_marginBottom="8dp"/>
+
+    <EditText android:id="@+id/etIssueDescription"
+        android:layout_width="match_parent" android:layout_height="120dp"
+        android:hint="e.g. The treadmill belt is slipping and making noise"
+        android:inputType="textMultiLine" android:gravity="top" android:padding="12dp"
+        android:background="#F5F5F5" android:layout_marginBottom="12dp"/>
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Severity:" android:textSize="14sp" android:textStyle="bold"
+        android:textColor="#1A1A2E" android:layout_marginBottom="8dp"/>
+
+    <Spinner android:id="@+id/spinnerSeverity"
+        android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>

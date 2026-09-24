@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ── IMAGE SECTION ─────────────────────────────────────── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📸 Exercise Image / GIF"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#1A1A2E"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Preview area -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="#F0F0F0"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:id="@+id/imgGifPreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Preview will appear here"
+                android:gravity="center"
+                android:textColor="#999999"
+                android:textSize="13sp"/>
+        </FrameLayout>
+
+        <!-- Status indicator -->
+        <TextView
+            android:id="@+id/tvMediaStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚠️ No image — add URL or pick from gallery"
+            android:textSize="12sp"
+            android:textColor="#FF9800"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Option A: URL -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option A — Paste URL (Giphy / Tenor / Imgur)"
+            android:textSize="12sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/etAdminGifUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="https://media.giphy.com/...  or  https://imgur.com/..."
+            android:inputType="textUri"
+            android:layout_marginBottom="6dp"/>
+
+        <Button
+            android:id="@+id/btnPreviewGif"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:text="👁️ Preview URL"
+            android:backgroundTint="#3949AB"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Divider -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#DDDDDD"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  OR  "
+                android:textSize="12sp"
+                android:textColor="#999999"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#DDDDDD"/>
+        </LinearLayout>
+
+        <!-- Option B: Gallery -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Option B — Pick from Gallery (image stored in database)"
+            android:textSize="12sp"
+            android:textColor="#555555"
+            android:layout_marginBottom="4dp"/>
+
+        <Button
+            android:id="@+id/btnPickFromGallery"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:text="🖼️ Choose from Gallery"
+            android:backgroundTint="#FF9800"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ℹ️ Images are compressed and saved to Firebase. Keep images under 3MB for best results."
+            android:textSize="11sp"
+            android:textColor="#888888"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Emoji fallback -->
+        <EditText
+            android:id="@+id/etAdminEmoji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Emoji fallback if no image (e.g. 🏋️  🏃  💪)"
+            android:inputType="text"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- ── DIVIDER ─────────────────────────────────────────────── -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EEEEEE"
+            android:layout_marginBottom="14dp"/>
+
+        <!-- ── WORKOUT INFO ─────────────────────────────────────────── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📋 Workout Details"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#1A1A2E"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/etAdminWorkoutName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Exercise name *"
+            android:inputType="textCapWords"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/etAdminWorkoutDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description — what does this exercise do?"
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Sets / Reps -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/etAdminWorkoutSets"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Sets (e.g. 3)"
+                android:inputType="number"
+                android:layout_marginEnd="8dp"/>
+
+            <EditText
+                android:id="@+id/etAdminWorkoutReps"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Reps (e.g. 15 or 30 sec)"/>
+        </LinearLayout>
+
+        <!-- Calories / Duration -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <EditText
+                android:id="@+id/etAdminWorkoutCals"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Calories burned"
+                android:inputType="number"
+                android:layout_marginEnd="8dp"/>
+
+            <EditText
+                android:id="@+id/etAdminWorkoutDuration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Duration (min)"
+                android:inputType="number"/>
+        </LinearLayout>
+
+        <!-- Goal -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fitness Goal:"
+            android:textSize="12sp"
+            android:textColor="#555555"/>
+        <Spinner
+            android:id="@+id/spAdminGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Category -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category:"
+            android:textSize="12sp"
+            android:textColor="#555555"/>
+        <Spinner
+            android:id="@+id/spAdminCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Difficulty -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Difficulty Level:"
+            android:textSize="12sp"
+            android:textColor="#555555"/>
+        <Spinner
+            android:id="@+id/spAdminDifficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Equipment -->
+        <EditText
+            android:id="@+id/etAdminEquipment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Equipment needed (e.g. Barbell, or None)"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Muscles -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Muscles Targeted (comma-separated):"
+            android:textSize="12sp"
+            android:textColor="#555555"/>
+        <EditText
+            android:id="@+id/etAdminMuscles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. Quads, Glutes, Core, Hamstrings"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Steps -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Step-by-step instructions (separate steps with | pipe):"
+            android:textSize="12sp"
+            android:textColor="#555555"/>
+        <EditText
+            android:id="@+id/etAdminSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Step 1|Step 2|Step 3..."
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Breathing -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Breathing Tip:"
+            android:textSize="12sp"
+            android:textColor="#555555"/>
+        <EditText
+            android:id="@+id/etAdminBreathing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Breathing guidance for this exercise..."
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Points to Remember -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Key Points / Safety Tips (separate with | pipe):"
+            android:textSize="12sp"
+            android:textColor="#555555"/>
+        <EditText
+            android:id="@+id/etAdminPoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Point 1|Point 2|Point 3..."
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:layout_marginBottom="8dp"/>
+
+    </LinearLayout>
+</ScrollView>
